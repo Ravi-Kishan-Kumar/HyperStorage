@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>HyperStorage</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+<body>
+    <div class="container">
+        <div id="authView" class="card">
+            <h1>HYPERSTORAGE</h1>
+            <p style="margin-bottom: 30px;">Decentralized File Storage Platform</p>
+
+            <div id="loginForm">
+                <h2>Login</h2>
+                <div class="form-group">
+                    <label>Email</label>
+                    <input type="email" id="loginEmail" placeholder="your@email.com">
+                </div>
+                <div class="form-group">
+                    <label>Password</label>
+                    <input type="password" id="loginPassword" placeholder="••••••••">
+                </div>
+                <button onclick="login()">Login</button>
+                <p style="margin-top: 15px;">Don't have an account? <a href="#" onclick="showRegister(); return false;">Register</a></p>
+            </div>
+
+            <div id="registerForm" class="hidden">
+                <h2>Register</h2>
+                <div class="form-group">
+                    <label>Username</label>
+                    <input type="text" id="regUsername" placeholder="username">
+                </div>
+                <div class="form-group">
+                    <label>Email</label>
+                    <input type="email" id="regEmail" placeholder="your@email.com">
+                </div>
+                <div class="form-group">
+                    <label>Password</label>
+                    <input type="password" id="regPassword" placeholder="••••••••">
+                </div>
+                <button onclick="register()">Register</button>
+                <p style="margin-top: 15px;">Already have an account? <a href="#" onclick="showLogin(); return false;">Login</a></p>
+            </div>
+        </div>
+
+        <div id="dashboardView" class="hidden">
+            <div class="card">
+                <div class="header">
+                    <h1>HYPERSTORAGE</h1>
+                    <button class="btn-logout" onclick="logout()">LOGOUT</button>
+                </div>
+                <p style="margin-bottom: 20px;"><small>USER: <span id="userEmail"></span></small></p>
+            </div>
+
+            <div class="card">
+                <h2>Storage Nodes</h2>
+                <div class="node-list" id="nodeList"></div>
+                <button onclick="loadNodes()">REFRESH</button>
+            </div>
+
+            <div class="card">
+                <h2>Upload File</h2>
+                <div class="form-group">
+                    <label>Select File</label>
+                    <input type="file" id="fileInput">
+                </div>
+                <button onclick="uploadFile()">UPLOAD</button>
+                <div id="uploadStatus" style="margin-top: 15px;"></div>
+            </div>
+
+            <div class="card">
+                <h2>Your Files</h2>
+
+                <div class="filter-bar">
+                    <input type="text" id="searchInput" placeholder="Search files by name or tags..." onkeyup="filterFiles()">
+                    <select id="sortSelect" onchange="filterFiles()">
+                        <option value="date-desc">Newest First</option>
+                        <option value="date-asc">Oldest First</option>
+                        <option value="name-asc">Name (A-Z)</option>
+                        <option value="name-desc">Name (Z-A)</option>
+                        <option value="size-desc">Largest First</option>
+                        <option value="size-asc">Smallest First</option>
+                    </select>
+                </div>
+
+                <div class="tag-filters" id="tagFilters">
+                    <button class="filter-btn active" data-tag="ALL" onclick="filterByTag('ALL')">ALL</button>
+                </div>
+
+                <div class="file-list" id="fileList"></div>
+            </div>
+        </div>
+    </div>
+
+    <script src="{{ url_for('static', filename='js/app.js') }}"></script>
+</body>
+</html>
