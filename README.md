@@ -34,3 +34,9 @@ source venv/bin/activate
 
 # Install required dependencies
 pip install flask flask-cors scikit-learn numpy requests
+```
+
+## 👥 Team
+
+* Ravi Kishan Kumar
+* Vikas Lalwani
