@@ -39,4 +39,4 @@ pip install flask flask-cors scikit-learn numpy requests
 ## 👥 Team
 
 * Ravi Kishan Kumar
-* Vikas Lalwani
+* Sachit Ramesha Gowda
